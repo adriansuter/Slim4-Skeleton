@@ -1,2 +1,5 @@
 # Slim4-Skeleton
-Web application skeleton that uses the Slim4 Framework, PHP-DI, Nyholm PSR7 and Twig.
+
+Web application skeleton that uses the [Slim4 Framework](http://www.slimframework.com/), 
+[PHP-DI](http://php-di.org/) as dependency injection container, [Nyholm PSR7](https://github.com/Nyholm/psr7) as PSR-7 implementation
+and [Twig](https://twig.symfony.com/) as template engine.
