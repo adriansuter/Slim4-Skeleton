@@ -24,7 +24,14 @@ $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$twig = new Twig($rootPath . '/application/templates', ['cache' => $rootPath . '/cache']);
+$twig = new Twig(
+    $rootPath . '/application/templates',
+    [
+        'cache' => $rootPath . '/cache',
+        'auto_reload' => true,
+        'debug' => false,
+    ]
+);
 $app->add(
     new TwigMiddleware($twig, $container, $app->getRouteCollector()->getRouteParser(), $app->getBasePath())
 );
