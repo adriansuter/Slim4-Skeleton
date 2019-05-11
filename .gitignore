@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+.tmp
+composer.lock
+vendor
+coverage
