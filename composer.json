@@ -20,5 +20,8 @@
     "nyholm/psr7": "^1.1",
     "nyholm/psr7-server": "^0.3",
     "php-di/php-di": "^6"
+  },
+  "scripts": {
+    "start": "php -S localhost:8080 -t public"
   }
 }
