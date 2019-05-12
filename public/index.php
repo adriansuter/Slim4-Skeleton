@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Controllers\HelloController;
 use App\Controllers\IndexController;
 use DI\Container;
 use Slim\Factory\AppFactory;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
@@ -36,6 +38,9 @@ $app->add(
     new TwigMiddleware($twig, $container, $app->getRouteCollector()->getRouteParser(), $app->getBasePath())
 );
 
-$app->get('/', IndexController::class)->setName('index');
+$app->group('/', function (RouteCollectorProxy $group) {
+    $group->get('', IndexController::class)->setName('index');
+    $group->get('hello/{name}', HelloController::class)->setName('hello');
+});
 
 $app->run();
