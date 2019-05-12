@@ -1,5 +1,30 @@
 {% extends 'html.twig' %}
 
 {% block contents %}
-    <h1>Hello {{ name }}!</h1>
+    <h1>
+        Slim 4 Skeleton
+    </h1>
+
+    <p>
+        This is a skeleton for a web application that uses the Slim 4 Framework.
+    </p>
+
+    <h2>
+        PSR-7 implementation
+    </h2>
+
+    <p>
+        By default this project uses the Nyholm PSR-7 implementation. But you are
+        free to use any other PSR-7 implementation. Just modify the <code>composer.json</code>
+        file. The two packages are <code>nyholm/psr7</code> and <code>nyholm/psr7-server</code>.
+    </p>
+
+    <h2>
+        Dependency injection
+    </h2>
+
+    <p>
+        By default this project uses the PHP-DI package to build a <code>Container</code>
+        for dependency injection.
+    </p>
 {% endblock %}
