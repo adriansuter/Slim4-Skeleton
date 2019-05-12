@@ -19,7 +19,7 @@ class IndexController extends AbstractController
     public function __invoke(Request $request, Response $response, array $args = []): Response
     {
         return $this->render($response, 'index.twig', [
-            'name' => 'World'
+            'pageTitle' => 'Home',
         ]);
     }
 }
