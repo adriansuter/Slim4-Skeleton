@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Controllers\HelloController;
-use App\Controllers\IndexController;
+use App\Controllers\HomeController;
 use DI\Container;
 use Slim\Factory\AppFactory;
 use Slim\Routing\RouteCollectorProxy;
@@ -39,7 +39,7 @@ $app->add(
 );
 
 $app->group('/', function (RouteCollectorProxy $group) {
-    $group->get('', IndexController::class)->setName('index');
+    $group->get('', HomeController::class)->setName('home');
     $group->get('hello/{name}', HelloController::class)->setName('hello');
 });
 
