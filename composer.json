@@ -1,5 +1,7 @@
 {
   "name": "adrian/slim4-skeleton",
+  "description": "Web application skeleton that uses the Slim4 Framework, PHP-DI, Nyholm PSR7 and Twig.",
+  "license": "MIT",
   "authors": [
     {
       "name": "Adrian Suter",
