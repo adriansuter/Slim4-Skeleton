@@ -26,16 +26,18 @@ $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$twig = new Twig(
-    $rootPath . '/application/templates',
-    [
-        'cache' => $rootPath . '/cache',
-        'auto_reload' => true,
-        'debug' => false,
-    ]
-);
+// Add the twig middleware (which when processed would set the 'view' to the container).
 $app->add(
-    new TwigMiddleware($twig, $container, $app->getRouteCollector()->getRouteParser(), $app->getBasePath())
+    new TwigMiddleware(
+        new Twig(
+            $rootPath . '/application/templates',
+            [
+                'cache' => $rootPath . '/cache',
+                'auto_reload' => true,
+                'debug' => false,
+            ]
+        ),
+        $container, $app->getRouteCollector()->getRouteParser(), $app->getBasePath())
 );
 
 $app->group('/', function (RouteCollectorProxy $group) {
