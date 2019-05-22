@@ -14,10 +14,10 @@ use Slim\Views\TwigMiddleware;
 date_default_timezone_set('Europe/Zurich');
 
 // Set the absolute path to the root directory.
-$rootPath = realpath(__DIR__ . '/..');
+$rootPath = realpath(__DIR__.'/..');
 
 // Include the autoloader.
-include_once($rootPath . '/vendor/autoload.php');
+include_once($rootPath.'/vendor/autoload.php');
 
 // Create the container for dependency injection.
 $container = new Container();
@@ -30,14 +30,17 @@ $app = AppFactory::create();
 $app->add(
     new TwigMiddleware(
         new Twig(
-            $rootPath . '/application/templates',
+            $rootPath.'/application/templates',
             [
-                'cache' => $rootPath . '/cache',
+                'cache' => $rootPath.'/cache',
                 'auto_reload' => true,
                 'debug' => false,
             ]
         ),
-        $container, $app->getRouteCollector()->getRouteParser(), $app->getBasePath())
+        $container,
+        $app->getRouteCollector()->getRouteParser(),
+        $app->getBasePath()
+    )
 );
 
 $app->group('/', function (RouteCollectorProxy $group) {
