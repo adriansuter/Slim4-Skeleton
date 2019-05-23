@@ -29,8 +29,8 @@ abstract class AbstractController
      * Render the template and write it to the response.
      *
      * @param Response $response
-     * @param string $template
-     * @param array $renderData
+     * @param string   $template
+     * @param array    $renderData
      *
      * @return Response
      */

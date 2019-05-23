@@ -10,9 +10,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class HelloController extends AbstractController
 {
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
-     * @param array $args
+     * @param array    $args
      *
      * @return Response
      */
