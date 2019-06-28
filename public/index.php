@@ -6,6 +6,7 @@ use App\Controllers\HelloController;
 use App\Controllers\HomeController;
 use DI\Container;
 use Slim\Factory\AppFactory;
+use Slim\Middleware\ErrorMiddleware;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
@@ -14,10 +15,10 @@ use Slim\Views\TwigMiddleware;
 date_default_timezone_set('Europe/Zurich');
 
 // Set the absolute path to the root directory.
-$rootPath = realpath(__DIR__ . '/..');
+$rootPath = realpath(__DIR__.'/..');
 
 // Include the composer autoloader.
-include_once($rootPath . '/vendor/autoload.php');
+include_once($rootPath.'/vendor/autoload.php');
 
 // Create the container for dependency injection.
 $container = new Container();
@@ -26,13 +27,27 @@ $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
+// Add error handling middleware.
+$displayErrorDetails = true;
+$logErrors = true;
+$logErrorDetails = false;
+
+$errorMiddleware = new ErrorMiddleware(
+    $app->getCallableResolver(),
+    $app->getResponseFactory(),
+    $displayErrorDetails,
+    true,
+    false
+);
+$app->add($errorMiddleware);
+
 // Add the twig middleware (which when processed would set the 'view' to the container).
 $app->add(
     new TwigMiddleware(
         new Twig(
-            $rootPath . '/application/templates',
+            $rootPath.'/application/templates',
             [
-                'cache' => $rootPath . '/cache',
+                'cache' => $rootPath.'/cache',
                 'auto_reload' => true,
                 'debug' => false,
             ]
