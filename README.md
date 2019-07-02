@@ -16,13 +16,13 @@ application.
 composer create-project adriansuter/slim4-skeleton [my-app-name]
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. 
+Replace `[my-app-name]` with the desired directory name for your new application.
 You'll want to:
 
 * Point your virtual host document root to your new application's `public/` directory.
-* Ensure `cache/` is web writable.
+* Ensure `cache/` and `logs/` are web writable.
 
-To run the application in development, you can run these commands 
+To run the application in development, you can run these commands
 
 ```bash
 cd [my-app-name]
