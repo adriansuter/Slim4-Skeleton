@@ -20,7 +20,7 @@
     "nyholm/psr7": "^1.1",
     "nyholm/psr7-server": "^0.3",
     "php-di/php-di": "^6",
-    "monolog/monolog": "^1"
+    "monolog/monolog": "2.0.0-beta1"
   },
   "scripts": {
     "start": "php -S localhost:8080 -t public"
