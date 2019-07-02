@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Controllers\ExceptionDemoController;
 use App\Controllers\HelloController;
 use App\Controllers\HomeController;
 use DI\Container;
@@ -15,10 +16,10 @@ use Slim\Views\TwigMiddleware;
 date_default_timezone_set('Europe/Zurich');
 
 // Set the absolute path to the root directory.
-$rootPath = realpath(__DIR__.'/..');
+$rootPath = realpath(__DIR__ . '/..');
 
 // Include the composer autoloader.
-include_once($rootPath.'/vendor/autoload.php');
+include_once($rootPath . '/vendor/autoload.php');
 
 // Create the container for dependency injection.
 $container = new Container();
@@ -45,9 +46,9 @@ $app->add($errorMiddleware);
 $app->add(
     new TwigMiddleware(
         new Twig(
-            $rootPath.'/application/templates',
+            $rootPath . '/application/templates',
             [
-                'cache' => $rootPath.'/cache',
+                'cache' => $rootPath . '/cache',
                 'auto_reload' => true,
                 'debug' => false,
             ]
@@ -62,6 +63,7 @@ $app->add(
 $app->group('/', function (RouteCollectorProxy $group) {
     $group->get('', HomeController::class)->setName('home');
     $group->get('hello/{name}', HelloController::class)->setName('hello');
+    $group->get('exception-demo', ExceptionDemoController::class)->setName('exception-demo');
 });
 
 // Run the app.
