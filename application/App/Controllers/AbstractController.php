@@ -38,6 +38,7 @@ abstract class AbstractController
     {
         /** @var Twig $view */
         $view = $this->container->get('view');
+
         return $view->render($response, $template, $renderData);
     }
 }
