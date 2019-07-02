@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
+use App\ContainerFactory;
 use App\Controllers\ExceptionDemoController;
 use App\Controllers\HelloController;
 use App\Controllers\HomeController;
-use DI\Container;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Routing\RouteCollectorProxy;
@@ -22,7 +22,11 @@ $rootPath = realpath(__DIR__ . '/..');
 include_once($rootPath . '/vendor/autoload.php');
 
 // Create the container for dependency injection.
-$container = new Container();
+try {
+    $container = ContainerFactory::create($rootPath);
+} catch (Exception $e) {
+    die($e->getMessage());
+}
 
 // Set the container to create the App with AppFactory.
 AppFactory::setContainer($container);
