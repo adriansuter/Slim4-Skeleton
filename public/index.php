@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Controllers\ExceptionDemoController;
 use App\Controllers\HelloController;
 use App\Controllers\HomeController;
 use DI\Container;
 use Slim\Factory\AppFactory;
+use Slim\Middleware\ErrorMiddleware;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
@@ -25,6 +27,20 @@ $container = new Container();
 // Set the container to create the App with AppFactory.
 AppFactory::setContainer($container);
 $app = AppFactory::create();
+
+// Add error handling middleware.
+$displayErrorDetails = true;
+$logErrors = true;
+$logErrorDetails = false;
+
+$errorMiddleware = new ErrorMiddleware(
+    $app->getCallableResolver(),
+    $app->getResponseFactory(),
+    $displayErrorDetails,
+    true,
+    false
+);
+$app->add($errorMiddleware);
 
 // Add the twig middleware (which when processed would set the 'view' to the container).
 $app->add(
@@ -47,6 +63,7 @@ $app->add(
 $app->group('/', function (RouteCollectorProxy $group) {
     $group->get('', HomeController::class)->setName('home');
     $group->get('hello/{name}', HelloController::class)->setName('hello');
+    $group->get('exception-demo', ExceptionDemoController::class)->setName('exception-demo');
 });
 
 // Run the app.

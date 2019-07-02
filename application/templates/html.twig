@@ -40,6 +40,14 @@
                         {% endif %}
                     </a>
                 </li>
+                <li class="nav-item{% if is_current_url('exception-demo') %} active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('exception-demo') }}">
+                        Exception Demo
+                        {% if is_current_url('exception-demo') %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
