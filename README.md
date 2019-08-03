@@ -19,7 +19,7 @@ composer create-project adriansuter/slim4-skeleton [my-app-name]
 Replace `[my-app-name]` with the desired directory name for your new application.
 You'll want to:
 
-* Point your virtual host document root to your new application's `public/` directory.
+* Point your virtual host document root to your new application's `public/` directory. (Virtual host is the mandatory way to access to your project. If you try to access directly from the container folder you will encounter an error)
 * Ensure `cache/` and `logs/` are web writable.
 
 To run the application in development, you can run these commands
