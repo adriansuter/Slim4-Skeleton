@@ -21,6 +21,9 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory>./application/App/</directory>
+            <exclude>
+                <directory>./application/App/Controllers</directory>
+            </exclude>
         </whitelist>
     </filter>
     <logging>
