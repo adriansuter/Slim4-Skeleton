@@ -7,7 +7,6 @@ use App\Controllers\ExceptionDemoController;
 use App\Controllers\HelloController;
 use App\Controllers\HomeController;
 use Slim\Factory\AppFactory;
-use Slim\Middleware\ErrorMiddleware;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
@@ -32,19 +31,10 @@ try {
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-// Add error handling middleware.
-$displayErrorDetails = true;
-$logErrors = true;
-$logErrorDetails = false;
-
-$errorMiddleware = new ErrorMiddleware(
-    $app->getCallableResolver(),
-    $app->getResponseFactory(),
-    $displayErrorDetails,
-    true,
-    false
 );
-$app->add($errorMiddleware);
+
+// Add the routing middleware.
+$app->addRoutingMiddleware();
 
 // Add the twig middleware (which when processed would set the 'view' to the container).
 $app->add(
@@ -62,6 +52,12 @@ $app->add(
         $app->getBasePath()
     )
 );
+
+// Add error handling middleware.
+$displayErrorDetails = true;
+$logErrors = true;
+$logErrorDetails = false;
+$app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
 
 // Define the app routes.
 $app->group('/', function (RouteCollectorProxy $group) {
