@@ -1,5 +1,8 @@
 # Slim4-Skeleton
 
+[![Build Status](https://travis-ci.org/adriansuter/Slim4-Skeleton.svg?branch=master)](https://travis-ci.org/adriansuter/Slim4-Skeleton)
+[![Coverage Status](https://coveralls.io/repos/github/adriansuter/Slim4-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/adriansuter/Slim4-Skeleton?branch=master)
+
 Web application skeleton that uses the [Slim4 Framework](http://www.slimframework.com/), 
 [PHP-DI](http://php-di.org/) as dependency injection container, [Nyholm PSR7](https://github.com/Nyholm/psr7) as PSR-7 implementation
 and [Twig](https://twig.symfony.com/) as template engine.

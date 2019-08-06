@@ -8,10 +8,6 @@ matrix:
       env: ANALYSIS='true'
     - php: 7.2
     - php: 7.3
-    - php: nightly
-
-  allow_failures:
-    - php: nightly
 
 before_script:
   - composer require php-coveralls/php-coveralls:^2.1.0
