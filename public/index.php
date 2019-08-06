@@ -31,6 +31,10 @@ try {
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
+// Set the cache file for the routes. Note that you have to delete this file
+// whenever you change the routes.
+$app->getRouteCollector()->setCacheFile(
+    $rootPath . '/cache/routes.cache'
 );
 
 // Add the routing middleware.
