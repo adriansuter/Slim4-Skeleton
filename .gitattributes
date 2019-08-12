@@ -2,12 +2,9 @@
 * text=lf
 
 # Exclude unused files
-# see: https://redd.it/2jzp6k
 /.coveralls.yml     export-ignore
 /.gitattributes     export-ignore
 /.github            export-ignore
 /.gitignore         export-ignore
 /.travis.yml        export-ignore
 /README.md          export-ignore
-/phpunit.xml.dist   export-ignore
-/tests              export-ignore
