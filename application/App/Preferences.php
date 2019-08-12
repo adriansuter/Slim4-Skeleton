@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
+/**
+ * This class contains the preferences for the application.
+ *
+ * @package App
+ */
 class Preferences
 {
     /**
