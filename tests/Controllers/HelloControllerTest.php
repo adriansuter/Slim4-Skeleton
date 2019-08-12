@@ -14,7 +14,23 @@ use Slim\Views\Twig;
 
 class HelloControllerTest extends TestCase
 {
-    public function testInvoke()
+    /**
+     * @return array
+     */
+    public function argsDataProvider(): array
+    {
+        return [
+            ['Slim'],
+            ['World']
+        ];
+    }
+
+    /**
+     * @dataProvider argsDataProvider
+     *
+     * @param string $argName
+     */
+    public function testInvoke(string $argName)
     {
         $self = $this;
         $twigProphecy = $this->prophesize(Twig::class);
@@ -23,11 +39,11 @@ class HelloControllerTest extends TestCase
                 $twigProphecy,
                 'render',
                 [Argument::type(ResponseInterface::class), Argument::type('string'), Argument::type('array')]
-            ))->will(function ($arguments) use ($self) {
+            ))->will(function ($arguments) use ($self, $argName) {
                 $self->assertSame('hello.twig', $arguments[1]);
                 $self->assertSame([
-                    'pageTitle' => 'Hello Slim',
-                    'name' => 'Slim'
+                    'pageTitle' => 'Hello ' . $argName,
+                    'name' => $argName
                 ], $arguments[2]);
 
                 return $arguments[0];
@@ -37,8 +53,8 @@ class HelloControllerTest extends TestCase
         $loggerProphecy = $this->prophesize(LoggerInterface::class);
         $loggerProphecy->addMethodProphecy(
             (new MethodProphecy($loggerProphecy, 'debug', [Argument::type('string')]))
-                ->will(function ($arguments) use ($self) {
-                    $self->assertSame('Hello "Slim"', $arguments[0]);
+                ->will(function ($arguments) use ($self, $argName) {
+                    $self->assertSame('Hello "' . $argName . '"', $arguments[0]);
                 })
         );
 
@@ -53,6 +69,6 @@ class HelloControllerTest extends TestCase
         $serverRequest = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
 
-        $helloController($serverRequest, $response, ['name' => 'Slim']);
+        $helloController($serverRequest, $response, ['name' => $argName]);
     }
 }
