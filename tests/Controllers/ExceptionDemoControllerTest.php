@@ -16,11 +16,11 @@ class ExceptionDemoControllerTest extends TestCase
      */
     public function testInvoke()
     {
-        $e = new ExceptionDemoController();
+        $exceptionDemoController = new ExceptionDemoController();
 
         $serverRequest = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
 
-        $e($serverRequest, $response, []);
+        $exceptionDemoController($serverRequest, $response, []);
     }
 }
