@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
 return [
-    LoggerInterface::class => function (ContainerInterface $container) {
+    LoggerInterface::class => function (ContainerInterface $container): LoggerInterface {
         // Get the preferences from the container.
         $preferences = $container->get(Preferences::class);
 
