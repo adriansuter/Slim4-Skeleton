@@ -46,11 +46,11 @@ class HomeControllerTest extends TestCase
         /** @var Preferences $preferences */
         $preferences = $preferencesProphecy->reveal();
 
-        $h = new HomeController($twig, $preferences);
+        $homeController = new HomeController($twig, $preferences);
 
         $serverRequest = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
 
-        $h($serverRequest, $response, []);
+        $homeController($serverRequest, $response, []);
     }
 }
