@@ -40,21 +40,9 @@ $app->getRouteCollector()->setCacheFile(
 // Add the routing middleware.
 $app->addRoutingMiddleware();
 
-// Add the twig middleware (which when processed would set the 'view' to the container).
-$app->add(
-    new TwigMiddleware(
-        new Twig(
-            $rootPath . '/application/templates',
-            [
-                'cache' => $rootPath . '/cache',
-                'auto_reload' => true,
-                'debug' => false,
-            ]
-        ),
-        $container,
-        $app->getRouteCollector()->getRouteParser(),
-        $app->getBasePath()
-    )
+// Add the twig middleware.
+$app->addMiddleware(
+    TwigMiddleware::create($app, $container->get(Twig::class))
 );
 
 // Add error handling middleware.

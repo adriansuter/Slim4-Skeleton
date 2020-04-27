@@ -7,6 +7,7 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use Slim\Views\Twig;
 
 return [
     LoggerInterface::class => function (ContainerInterface $container): LoggerInterface {
@@ -22,5 +23,19 @@ return [
         );
 
         return $logger;
+    },
+    Twig::class => function (ContainerInterface $container): Twig {
+        // Get the preferences from the container.
+        $preferences = $container->get(Preferences::class);
+
+        // Instantiate twig.
+        return Twig::create(
+            $preferences->getRootPath() . '/application/templates',
+            [
+                'cache' => $preferences->getRootPath() . '/cache',
+                'auto_reload' => true,
+                'debug' => false,
+            ]
+        );
     },
 ];
