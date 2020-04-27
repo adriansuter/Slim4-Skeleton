@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "php": "^7.1",
+    "php": "^7.2",
     "slim/slim": "^4.1",
     "slim/twig-view": "^3.1",
     "nyholm/psr7": "^1.2",
