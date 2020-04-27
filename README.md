@@ -10,13 +10,6 @@ and [Twig](https://twig.symfony.com/) as template engine.
 This skeleton application was built for [Composer](https://getcomposer.org/).
 
 
-## CAUTION
-
-**The Slim Twig-View is still in active development and can introduce breaking changes. It is 
-an alpha release. Of course you can use this skeleton, but be warned. As soon as
-you update the Slim Twig-View, you might have to modify your code.**
-
-
 ## Installation
 
 Run this command from the directory in which you want to install your new Slim4 Framework
