@@ -6,3 +6,4 @@ vendor
 coverage
 cache/**
 logs/**
+.phpunit.result.cache

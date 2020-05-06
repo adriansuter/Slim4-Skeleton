@@ -11,11 +11,10 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class ExceptionDemoControllerTest extends TestCase
 {
-    /**
-     * @expectedException ErrorException
-     */
     public function testInvoke()
     {
+        $this->expectException(ErrorException::class);
+
         $exceptionDemoController = new ExceptionDemoController();
 
         $serverRequest = $this->createMock(ServerRequestInterface::class);
