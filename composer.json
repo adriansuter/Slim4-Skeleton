@@ -20,7 +20,7 @@
     "nyholm/psr7": "^1.2",
     "nyholm/psr7-server": "^0.4",
     "php-di/php-di": "^6",
-    "monolog/monolog": "^1.24"
+    "monolog/monolog": "^2.0"
   },
   "autoload-dev": {
     "psr-4": {
