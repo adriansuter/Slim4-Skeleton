@@ -18,7 +18,7 @@
     "slim/slim": "^4.1",
     "slim/twig-view": "^3.1",
     "nyholm/psr7": "^1.2",
-    "nyholm/psr7-server": "^0.4",
+    "nyholm/psr7-server": "^1.0",
     "php-di/php-di": "^6",
     "monolog/monolog": "^2.0"
   },
